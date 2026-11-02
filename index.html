@@ -29,6 +29,7 @@
           <li><a href="#vybava">Výbava</a></li>
           <li><a href="#oblubene">Obľúbené kapely</a></li>
           <li><a href="#hory">Hory</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -91,7 +92,10 @@
         </div>
         <div class="bands-grid">
           <article class="band-card">
-            <div>
+            <div class="band-logo-frame">
+              <img class="band-logo" src="logo%20chaos.png" alt="Logo kapely Chaos v Rytme" width="1241" height="993" loading="lazy">
+            </div>
+            <div class="band-details">
               <p class="band-type">Punková kapela</p>
               <h3>Chaos v Rytme</h3>
               <p>Punk z Martina</p>
@@ -99,7 +103,10 @@
             <a class="band-link" href="https://tobiasgoffa.github.io/chaosvrytme/" target="_blank" rel="noopener noreferrer">Web kapely <span aria-hidden="true">↗</span></a>
           </article>
           <article class="band-card">
-            <div>
+            <div class="band-logo-frame">
+              <img class="band-logo band-logo--rocksors" src="logo%20rocksors.svg" alt="Logo kapely The Rocksors" width="482" height="272" loading="lazy">
+            </div>
+            <div class="band-details">
               <p class="band-type">Rocková kapela</p>
               <h3>The Rocksors</h3>
             </div>
@@ -200,12 +207,29 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="kontakt" aria-labelledby="contact-title">
+      <div class="wrap contact">
+        <div class="contact-copy">
+          <p class="section-kicker">Kontakt</p>
+          <h2 id="contact-title">Máš otázku alebo chceš<br>spolupracovať?</h2>
+          <p>Napíš mi e-mail, rád sa ozvem.</p>
+        </div>
+        <a class="contact-email" href="mailto:hanzeljakub123@gmail.com">
+          <span>hanzeljakub123@gmail.com</span>
+          <span class="contact-email-action">Napísať e-mail <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>Jakub “Kubo” Hanzel</p>
-      <p>Gitara, punk a hory.</p>
+      <div class="footer-brand">
+        <p class="footer-name">Jakub “Kubo” Hanzel</p>
+        <p>Gitara, punk a hory.</p>
+      </div>
+      <p class="footer-copyright">&copy; <span id="current-year">2026</span> Jakub “Kubo” Hanzel. Všetky práva vyhradené.</p>
     </div>
   </footer>
 

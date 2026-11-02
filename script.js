@@ -1,10 +1,14 @@
     (() => {
       const button = document.querySelector(".menu-toggle");
       const navigation = document.querySelector("#primary-navigation");
+      const header = document.querySelector(".site-header");
+      document.querySelector("#current-year").textContent = new Date().getFullYear();
       const mobile = window.matchMedia("(max-width: 760px)");
+      let previousScrollY = window.scrollY;
 
       const syncNavigation = () => {
         if (mobile.matches) {
+          header.classList.remove("is-hidden");
           navigation.hidden = true;
           button.hidden = false;
           button.setAttribute("aria-expanded", "false");
@@ -14,7 +18,9 @@
           button.hidden = true;
           button.setAttribute("aria-expanded", "true");
           button.setAttribute("aria-label", "Navigácia je otvorená");
+          header.classList.remove("is-hidden");
         }
+        previousScrollY = window.scrollY;
       };
 
       button.addEventListener("click", () => {
@@ -41,7 +47,30 @@
         }
       });
 
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        const scrollDifference = currentScrollY - previousScrollY;
+
+        if (!mobile.matches) {
+          header.classList.remove("is-hidden");
+          previousScrollY = currentScrollY;
+          return;
+        }
+
+        if (currentScrollY <= 0) {
+          header.classList.remove("is-hidden");
+          previousScrollY = currentScrollY;
+          return;
+        }
+
+        if (Math.abs(scrollDifference) < 8) return;
+
+        if (button.getAttribute("aria-expanded") !== "true") {
+          header.classList.toggle("is-hidden", scrollDifference > 0);
+        }
+        previousScrollY = currentScrollY;
+      }, { passive: true });
+
       mobile.addEventListener("change", syncNavigation);
-      window.addEventListener("resize", syncNavigation);
       syncNavigation();
     })();
