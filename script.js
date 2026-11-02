@@ -3,8 +3,20 @@
       const navigation = document.querySelector("#primary-navigation");
       const header = document.querySelector(".site-header");
       document.querySelector("#current-year").textContent = new Date().getFullYear();
+      const copyButton = document.querySelector(".contact-copy-button");
+      const contactAddress = document.querySelector("#contact-address").textContent;
+      const copyStatus = document.querySelector("#contact-copy-status");
       const mobile = window.matchMedia("(max-width: 760px)");
       let previousScrollY = window.scrollY;
+
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(contactAddress);
+          copyStatus.textContent = "E-mail je skopírovaný.";
+        } catch {
+          copyStatus.textContent = "Kopírovanie sa nepodarilo. Označ adresu a skopíruj ju ručne.";
+        }
+      });
 
       const syncNavigation = () => {
         if (mobile.matches) {

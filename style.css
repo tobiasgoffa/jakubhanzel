@@ -170,7 +170,7 @@
       grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
       align-items: center;
       gap: 2rem;
-      padding-block: 5.5rem 6rem;
+      padding-block: 3rem 5rem;
     }
     .hero-portrait {
       position: relative;
@@ -591,17 +591,26 @@
     .contact-copy > p:last-child { margin: 0; color: var(--muted); }
     .contact-email {
       display: grid;
+      justify-items: start;
       gap: .6rem;
       padding: 1.15rem 1.25rem;
       border: 1px solid #53383a;
       background: rgba(255,255,255,.025);
       color: var(--ink);
       overflow-wrap: anywhere;
-      text-decoration: none;
-      transition: border-color .18s ease, background .18s ease;
+      user-select: text;
     }
-    .contact-email:hover { border-color: var(--accent); background: rgba(255,69,62,.06); }
-    .contact-email-action { color: #ff918b; font-size: .82rem; font-weight: 750; }
+    .contact-copy-button {
+      width: auto;
+      margin: .25rem 0 0;
+      padding: .55rem .85rem;
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--pico-primary-inverse);
+      font-size: .82rem;
+    }
+    .contact-copy-button:hover { border-color: var(--accent-deep); background: var(--accent-deep); }
+    .contact-email-hint { color: #ff918b; font-size: .82rem; font-weight: 750; }
     .site-footer { padding-block: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); color: #988b89; font-size: .82rem; }
     .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; }
     .footer-brand { display: grid; gap: .2rem; }
@@ -639,7 +648,7 @@
       .hero { min-height: 470px; }
       .hero::before { top: 2%; right: -35%; width: 90vw; }
       .hero::after { right: 8%; bottom: 5%; width: 90px; height: 90px; }
-      .hero-content { grid-template-columns: 1fr; gap: 1.75rem; padding-block: 4.5rem 5rem; }
+      .hero-content { grid-template-columns: 1fr; gap: 1.75rem; padding-block: 2rem 4rem; }
       .hero-portrait { justify-self: start; width: min(68vw, 300px); }
       .section { padding-block: 3.7rem; }
       .section-heading { grid-template-columns: 1fr; gap: .9rem; margin-bottom: 1.7rem; }
