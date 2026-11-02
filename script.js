@@ -9,9 +9,41 @@
       const mobile = window.matchMedia("(max-width: 760px)");
       let previousScrollY = window.scrollY;
 
+      const copyText = async (text) => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return;
+          } catch {
+            // Fall back for browsers or contexts that reject clipboard access.
+          }
+        }
+
+        const temporaryInput = document.createElement("textarea");
+        temporaryInput.value = text;
+        temporaryInput.setAttribute("readonly", "");
+        temporaryInput.style.position = "fixed";
+        temporaryInput.style.opacity = "0";
+        document.body.append(temporaryInput);
+
+        let copied = false;
+        try {
+          temporaryInput.select();
+          temporaryInput.setSelectionRange(0, text.length);
+          copied = document.execCommand("copy");
+        } finally {
+          temporaryInput.remove();
+          copyButton.focus();
+        }
+
+        if (!copied) {
+          throw new Error("The browser could not copy the email address.");
+        }
+      };
+
       copyButton.addEventListener("click", async () => {
         try {
-          await navigator.clipboard.writeText(contactAddress);
+          await copyText(contactAddress);
           copyStatus.textContent = "E-mail je skopírovaný.";
         } catch {
           copyStatus.textContent = "Kopírovanie sa nepodarilo. Označ adresu a skopíruj ju ručne.";
